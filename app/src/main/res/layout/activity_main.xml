@@ -7,15 +7,25 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/text_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="登出"
         android:onClick="onSignOut"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="取得用戶資訊"
+        android:onClick="getUserProfile"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="驗證Email"
+        android:onClick="sendVerifyEmail"/>
+    <TextView
+        android:id="@+id/text_user_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 
 </LinearLayout>
