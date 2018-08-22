@@ -27,6 +27,11 @@
         android:layout_height="wrap_content"
         android:text="更新用戶資訊"
         android:onClick="updateUserInfo"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="重新認證"
+        android:onClick="reauthenticate"/>
     <TextView
         android:id="@+id/text_user_info"
         android:layout_width="wrap_content"
