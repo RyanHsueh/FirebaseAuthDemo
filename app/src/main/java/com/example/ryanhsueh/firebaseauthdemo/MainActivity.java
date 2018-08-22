@@ -106,6 +106,10 @@ public class MainActivity extends AppCompatActivity {
     /*
         官網強調當你刪除帳號、設定主要 email 以及改變密碼的時候
         都必須做 Re-authenticate 否則有機會會丟出 FirebaseAuthRecentLoginRequiredException
+
+        首先必須透過 AuthCredential 拿到 EmailAuthProvider 的憑證
+        接著透過 FirebaseUser 物件的 reauthenticate 方法將憑證傳入
+
         因此我們在呼叫 FirebaseUser 物件的 updateEmail
         要寫在 FirebaseUser 物件的 reauthenticate callback 完成以後才可以改變 Email
      */
@@ -124,7 +128,9 @@ public class MainActivity extends AppCompatActivity {
                             String email = tl_username.getEditText().getText().toString();
                             String password = tl_password.getEditText().getText().toString();
 
+                            // 取得用戶憑證
                             AuthCredential credential = EmailAuthProvider.getCredential(email, password);
+
                             user.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
@@ -132,7 +138,8 @@ public class MainActivity extends AppCompatActivity {
                                         Toast.makeText(MainActivity.this, "重新認證成功", Toast.LENGTH_SHORT).show();
 
                                         // 重新認證成功後，才可修改用戶Email or Password
-                                        
+                                        // add code to update Email/Password
+
                                     } else {
                                         Toast.makeText(MainActivity.this, "重新認證失敗", Toast.LENGTH_SHORT).show();
                                     }
